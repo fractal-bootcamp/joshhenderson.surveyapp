@@ -1,7 +1,7 @@
 import type { MetaFunction, ActionFunction, redirect } from "@remix-run/node";
 import { Form, Link, useActionData, useSearchParams } from "@remix-run/react"
-import { getSurveys } from "./surveys";
-import { json } from "@"
+import Surveys from "./surveys";
+import { json } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
   return [
@@ -14,14 +14,16 @@ export const meta: MetaFunction = () => {
 
 
 export default function Index() {
-  const
+
   return (
-    <div>
-      <Form action="/Index" method="post">
-        <input name="title" type="text" />
-        <input name="description" type="text" />
-      </Form>
-    </div>
+    <div  >
+      <Link to="/new">
+        add new survey
+      </Link>
+      <Link to="/surveys">
+        view surveys
+      </Link>
+    </div >
   )
 }
 
