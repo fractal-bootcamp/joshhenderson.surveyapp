@@ -1,41 +1,31 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { MetaFunction, ActionFunction, redirect } from "@remix-run/node";
+import { Form, Link, useActionData, useSearchParams } from "@remix-run/react"
+import Surveys from "./surveys";
+import { json } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "test" },
+    { description: "testing" }
   ];
 };
 
+
 export default function Index() {
+
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/start/quickstart"
-            rel="noreferrer"
-          >
-            5m Quick Start
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/start/tutorial"
-            rel="noreferrer"
-          >
-            30m Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
-  );
+    <div className="columns-2"  >
+      <Link to="/new">
+        add new survey
+      </Link>
+      <Link to="/surveys">
+        view surveys
+      </Link>
+    </div >
+  )
 }
+
+//surveys 
+//survey creation form
+//survey
+//survey results aka answers
