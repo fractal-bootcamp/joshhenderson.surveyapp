@@ -11,6 +11,7 @@ export const loader = async () => {
 };
 
 //{survey.Question}
+import newSurvey from "~/components/newSurvey";
 
 export default function Surveys() {
     const data = useLoaderData<typeof loader>();
@@ -21,11 +22,7 @@ export default function Surveys() {
                     <li key={survey.ID}>{survey.Title}</li>
                 ))}
             </ul>
-            <ul>
-                <Link to="/new">
-                    add new survey
-                </Link>
-            </ul>
+            < newSurvey />
         </div>
     );
 }
