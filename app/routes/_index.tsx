@@ -11,12 +11,10 @@ export const meta: MetaFunction = () => {
 };
 
 
-
-
 export default function Index() {
 
   return (
-    <div  >
+    <div className="columns-2"  >
       <Link to="/new">
         add new survey
       </Link>

@@ -22,7 +22,7 @@ export default function Surveys() {
                 ))}
             </ul>
             <ul>
-                <Link to="new">
+                <Link to="/new">
                     add new survey
                 </Link>
             </ul>
