@@ -1,31 +1,46 @@
-import type { MetaFunction, ActionFunction, redirect } from "@remix-run/node";
-import { Form, Link, useActionData, useSearchParams } from "@remix-run/react"
-import Surveys from "./surveys";
-import { json } from "@remix-run/node";
+import { Link } from "@remix-run/react"
+import { useState } from "react"
+import client from "~/client"
+import type { ActionFunctionArgs } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
+import { Form } from "@remix-run/react";
+// import { prisma } from "../db";
+import { useLoaderData, useActionData } from "@remix-run/react";
 
-export const meta: MetaFunction = () => {
-  return [
-    { title: "test" },
-    { description: "testing" }
-  ];
-};
+// export async function action({
+//   request,
+// }: ActionFunctionArgs) {
+//   const body = await request.formData();
+//   // const survey = await fakeCreateSurvey({
+//   //   title: body.get("title"),
+//   // });
+//   return redirect(`/surveys/${Surveys.id}`);
+// }
+
+export async function loader() {
+  return json(await client.survey.findMany());
+}
 
 
-export default function Index() {
 
+
+export default function Surveys() {
+  const data = useLoaderData<typeof loader>();
   return (
-    <div className="columns-2"  >
+    <div>
+      <input value={'Search by Name'} />
       <Link to="/new">
         add new survey
       </Link>
-      <Link to="/surveys">
-        view surveys
-      </Link>
+      <div>HELLO WORLD</div>
+      <ul>
+        {data.map((survey: any) => (
+          <li key={survey.id}>{survey.name}</li>
+        ))}
+      </ul>
+
     </div >
   )
 }
 
-//surveys 
-//survey creation form
-//survey
-//survey results aka answers
+
