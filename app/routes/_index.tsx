@@ -6,39 +6,17 @@ import { json, redirect } from "@remix-run/node";
 import { Form } from "@remix-run/react";
 // import { prisma } from "../db";
 import { useLoaderData, useActionData } from "@remix-run/react";
+import NewSurvey from "../components/newSurvey";
 
-// export async function action({
-//   request,
-// }: ActionFunctionArgs) {
-//   const body = await request.formData();
-//   // const survey = await fakeCreateSurvey({
-//   //   title: body.get("title"),
-//   // });
-//   return redirect(`/surveys/${Surveys.id}`);
-// }
+export default function Index() {
 
-export async function loader() {
-  return json(await client.survey.findMany());
-}
-
-
-
-
-export default function Surveys() {
-  const data = useLoaderData<typeof loader>();
   return (
     <div>
-      <input value={'Search by Name'} />
-      <Link to="/new">
-        add new survey
+      <input />
+      <Link to="/surveys">
+        Surveys
       </Link>
-      <div>HELLO WORLD</div>
-      <ul>
-        {data.map((survey: any) => (
-          <li key={survey.id}>{survey.name}</li>
-        ))}
-      </ul>
-
+      <NewSurvey />
     </div >
   )
 }
