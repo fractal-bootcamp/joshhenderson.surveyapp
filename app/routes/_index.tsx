@@ -1,31 +1,24 @@
-import type { MetaFunction, ActionFunction, redirect } from "@remix-run/node";
-import { Form, Link, useActionData, useSearchParams } from "@remix-run/react"
-import Surveys from "./surveys";
-import { json } from "@remix-run/node";
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "test" },
-    { description: "testing" }
-  ];
-};
-
+import { Link } from "@remix-run/react"
+import { useState } from "react"
+import client from "~/client"
+import type { ActionFunctionArgs } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
+import { Form } from "@remix-run/react";
+// import { prisma } from "../db";
+import { useLoaderData, useActionData } from "@remix-run/react";
+import NewSurvey from "../components/newSurvey";
 
 export default function Index() {
 
   return (
-    <div className="columns-2"  >
-      <Link to="/new">
-        add new survey
-      </Link>
+    <div>
+      <input />
       <Link to="/surveys">
-        view surveys
+        Surveys
       </Link>
+      <NewSurvey />
     </div >
   )
 }
 
-//surveys 
-//survey creation form
-//survey
-//survey results aka answers
+
